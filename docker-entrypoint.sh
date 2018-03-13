@@ -57,6 +57,7 @@ if version_greater "$image_version" "$installed_version"; then
     fi
 
     if [ "$installed_version" != "0.0.0~unknown" ]; then
+    	chmod -R 0770 /var/www/html/data
         run_as 'php /var/www/html/occ upgrade --no-app-disable'
 
         run_as 'php /var/www/html/occ app:list' > /tmp/list_after
